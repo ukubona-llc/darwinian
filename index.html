@@ -78,13 +78,13 @@ q{quotes:"\201C" "\201D"}
 <h2>The chain</h2>
 <p>The utterance becomes the sample, the language. Prediction error justifies, without aiming at anything, recombination and adaptation. Those recombinations become the stratagems of colliding principals A, B, &hellip; N. What follows is a graveyard and champions who live to die another day, and the champions become the next engine.</p>
 <div class="fig">
-<svg viewBox="0 0 660 190" width="660" role="img" aria-label="Five layers as light nodes joined by heavy labeled edges: compress, license, collide, filter, and a loop labeled inherit from V back to I prime">
+<svg viewBox="0 0 660 190" width="660" role="img" aria-label="Five layers as light nodes joined by heavy labeled edges: compress, license, agon, filter, and a loop labeled inherit from V back to I prime">
 <defs><marker id="ah" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 8 4 0 8z" fill="var(--ac2)"/></marker></defs>
 <g class="ar b" marker-end="url(#ah)"><path d="M72 70H168" marker-end="url(#ah)"/><path d="M212 70H308" marker-end="url(#ah)"/><path d="M352 70H448" marker-end="url(#ah)"/><path d="M492 70H588" marker-end="url(#ah)"/><path d="M610 94V150H50V96" marker-end="url(#ah)" stroke-dasharray="7 5"/></g>
 <g class="nd l"><circle cx="50" cy="70" r="22"/><circle cx="190" cy="70" r="22"/><circle cx="330" cy="70" r="22"/><circle cx="470" cy="70" r="22"/><circle cx="610" cy="70" r="22"/></g>
 <g font-size="14" text-anchor="middle" class="mu"><text x="50" y="75">I</text><text x="190" y="75">II</text><text x="330" y="75">III</text><text x="470" y="75">IV</text><text x="610" y="75">V</text></g>
 <g font-size="12" text-anchor="middle" class="mu"><text x="50" y="112">Engine</text><text x="190" y="112">Sample</text><text x="330" y="112">Variation</text><text x="470" y="112">Collision</text><text x="610" y="112">Survivors</text></g>
-<g text-anchor="middle" class="ed"><text x="120" y="56">compress</text><text x="260" y="56">license</text><text x="400" y="56">collide</text><text x="540" y="56">filter</text><text x="330" y="172">inherit: survivors become the next engine (I&prime;)</text></g>
+<g text-anchor="middle" class="ed"><text x="120" y="56">compress</text><text x="260" y="56">license</text><text x="400" y="56">agon</text><text x="540" y="56">filter</text><text x="330" y="172">inherit: survivors become the next engine (I&prime;)</text></g>
 </svg>
 <p class="cap">Nodes drawn light, edges drawn heavy. Remove an edge and its node still exists but does nothing.</p>
 </div>
@@ -97,7 +97,7 @@ q{quotes:"\201C" "\201D"}
 <tr><th>Edge</th><th>Operation</th><th>What crosses</th><th>How it breaks</th></tr>
 <tr><td>I &rarr; II</td><td>Compress</td><td>Prelingual utterance becomes a sample, a token, a record</td><td>Whoever picks the sampling frame picks the reflection. 12TET is the benign case: the distortion is bounded and known to the cent</td></tr>
 <tr><td>II &rarr; III</td><td>License</td><td>Prediction error permits recombination; it does not choose one</td><td>Error with nothing to rank it. Nihilism, in this reading, is language running without regulation</td></tr>
-<tr><td>III &rarr; IV</td><td>Collide</td><td>Recombinations become the strategies of principals A to N</td><td>Collisions with no gate: anyone can insert, tombstone or reorder another's record</td></tr>
+<tr><td>III &rarr; IV</td><td></td><td>Recombinations become the strategies of principals A to N</td><td>Collisions with no gate: anyone can insert, tombstone or reorder another's record</td></tr>
 <tr><td>IV &rarr; V</td><td>Filter</td><td>Collisions leave a graveyard and survivors, mostly by other agents' action</td><td>Agent ranking mistaken for survival, or a loyalty circle shielding its members from the filter</td></tr>
 <tr><td>V &rarr; I&prime;</td><td>Inherit</td><td>Survivors, culture, memory and institutions become the next engine's environment</td><td>The loop closes on agent output and the platform authors the person</td></tr>
 </table></div>
@@ -141,7 +141,7 @@ q{quotes:"\201C" "\201D"}
 <p class="cl">ledger.edge.ndjson (proposal)</p>
 <div class="sc"><pre>{"type":"field","name":"from","note":"I | II | III | IV | V | I'"}
 {"type":"field","name":"to","note":"the layer it crossed into"}
-{"type":"field","name":"op","note":"compress | license | insert | tombstone | reorder | collide | filter | ratify | inherit"}
+{"type":"field","name":"op","note":"compress | license | insert | tombstone | reorder | agon | filter | ratify | inherit"}
 {"type":"field","name":"actor","note":"who performed the operation"}
 {"type":"field","name":"frame","note":"sampling frame: when, in what state, asked by whom"}
 {"type":"field","name":"ts","note":"timestamp, with ts_precision"}
