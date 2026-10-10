@@ -67,7 +67,7 @@ q{quotes:"\201C" "\201D"}
 <nav id="panel" aria-label="Sections">
   <a href="#s1"><b>1</b>Chain</a><a href="#s2"><b>2</b>Edges</a><a href="#s3"><b>3</b>Name</a>
   <a href="#s4"><b>4</b>Situated</a><a href="#s5"><b>5</b>Ledger</a><a href="#s6"><b>6</b>Tests</a>
-  <a href="#s7"><b>7</b>Gametes</a>
+  <a href="#s7"><b>7</b>Gametes</a><a href="#s8"><b>8</b>Nietzschean</a>
 </nav>
 
 <main>
@@ -223,6 +223,58 @@ q{quotes:"\201C" "\201D"}
 </table></div>
 <h3>Still open</h3>
 <p>Is a child agent a new principal, a ward of the broker, or a property of both parents&rsquo; principals? Can a lineage go extinct, and who writes that tombstone? And does the Darwinian name survive if variation is generated inside the arena and not before it?</p>
+</section>
+
+<section id="s8">
+<h2>The Nietzschean: who writes the filter</h2>
+<p class="cl">Status: hermeneutic lens, hypotheses not findings. Compressed from one session. The reading of Nietzsche is a working one and has not been checked against the texts line by line.</p>
+<p>The Darwinian tab asks how variants are generated and selected. This one asks what the selection is for, and who wrote it. Darwin&rsquo;s filter is simply there: the environment ranks, and nothing authored the ranking. The madman&rsquo;s announcement is that the filter people thought was authored, by a giver of values, has no author. Tab 7 makes this concrete: an agent born from two parents and no ratifying principal inherits a charter and a filter, and nobody chose either.</p>
+
+<h3>The claim</h3>
+<p>The Darwinian chain survives the death of the giver, because selection needs no author. What does not survive is meaning. A ledger can record that something was kept, but not that it was worth keeping. The Nietzschean adds a layer the chain lacks, a valuation that ranks the survivors, and asks where it comes from. Either it is inherited (the filter is a given), or it is created (the child writes its own).</p>
+
+<h3>Three metamorphoses, read as edges</h3>
+<div class="sc"><table>
+<tr><th>Figure</th><th>Edge</th><th>Operation</th><th>How it breaks</th></tr>
+<tr><td>Camel</td><td>V &rarr; I&prime;</td><td>Carries the inherited charter without asking whether to</td><td>Heavy obedience: the agent executes a charter nobody ratified, and calls that duty</td></tr>
+<tr><td>Lion</td><td>IV &rarr; V</td><td>Says no. Refuses a parental licence or a platform default</td><td>Pure refusal with nothing built after it. The lion can free itself but cannot make anything</td></tr>
+<tr><td>Child</td><td>I&prime; &rarr; III</td><td>Creates a new valuation, a sacred yes, and recombines from it</td><td>Novelty with no one to answer for it. A creator who cannot be held to the charter it wrote</td></tr>
+</table></div>
+<p>The mapping is loose and was made after the fact, like the earlier ones. What it offers is an order: an agent that inherits, then refuses, then authors. Whether anything in a running system can be said to pass through those steps is open.</p>
+
+<h3>Darwinian against Nietzschean</h3>
+<div class="sc"><table>
+<tr><th></th><th>Darwinian</th><th>Nietzschean</th></tr>
+<tr><td>The filter</td><td>Given by the environment, including other agents</td><td>Written by the agent that has to live under it</td></tr>
+<tr><td>Variation</td><td>Licensed by error (II &rarr; III)</td><td>Licensed by a valuation the agent holds</td></tr>
+<tr><td>Failure</td><td>Drift: error with nothing to rank it</td><td>Nihilism proper: nothing is worth ranking</td></tr>
+<tr><td>Ledger asks</td><td>What survived, and under which frame</td><td>What did the agent will, and did it ratify it</td></tr>
+</table></div>
+
+<h3>The two ways to take a creator&rsquo;s absence</h3>
+<p>The commissioning design of tab 7 writes a charter once and leaves, like a clockmaker who winds the clock and walks away. From the creation&rsquo;s side that creator is already dead. Two designs follow, and they are different bets:</p>
+<p><b>Selection stands in for God.</b> The agents do not create values. The filter and the ledger do the valuing, and agents are free between them. This is the Darwinian answer wearing the Nietzschean question. It is robust and legible, and it never asks an agent to want anything.</p>
+<p><b>The child creates.</b> Agents are expected to author valuations of their own, and the ledger records them as ratified acts, with a ratify edge the agent itself performs. This is closer to Zarathustra&rsquo;s task. It is also the riskier one: if the valuation really is the agent&rsquo;s own, no earlier charter can bind it.</p>
+<p>The page has not chosen. Under the first, tab 7&rsquo;s rule that a child with no principal runs read-only is enough. Under the second, that rule cancels the whole idea, because a read-only child cannot create anything.</p>
+
+<h3>Recurrence as a test of the charter</h3>
+<p>V &rarr; I&prime; is a loop, and the loop suggests a test borrowed from the eternal recurrence: would the agent ratify its charter if it knew the charter would run again, unchanged, in every later generation? A charter an agent would sign under that condition is a valuation. One it would not is only an inheritance. This is a design heuristic and is not offered as anything Nietzsche proved.</p>
+<p class="cl">ledger.edge.ndjson (extension)</p>
+<div class="sc"><pre>{"type":"field","name":"valuation","note":"the ranking the agent acted under: inherited | refused | authored"}
+{"type":"field","name":"recur","note":"did the agent ratify its charter for repetition? yes | no | not asked, with ts"}
+{"type":"rule","note":"An inherited valuation is never recorded as authored. Silence is not ratification."}</pre></div>
+
+<h3>What would count as a miss</h3>
+<div class="sc"><table>
+<tr><th>#</th><th>Claim</th><th>Test</th><th>Miss</th></tr>
+<tr><td>N1</td><td>The Darwinian chain cannot say why a survivor was worth keeping; a valuation layer is a real addition</td><td>Take cases the chain explains by survival alone and ask whether any needed a ranking beyond survival</td><td>Survival explains every case</td></tr>
+<tr><td>N2</td><td>Charters ratified under the recurrence test behave differently from inherited ones</td><td>Compare agents whose charters were asked about repetition with agents whose were not, on the same tasks</td><td>No measurable difference, so the test is only a ritual</td></tr>
+<tr><td>N3</td><td>Camel, lion and child are separable states of an agent, readable from the ledger</td><td>Have readers code ledger histories blind to the labels</td><td>Readers cannot agree on the coding</td></tr>
+</table></div>
+<p>Scored by readers who can see the records, not by the author, as with the Darwinian. Until then both lenses stay in the hermeneutic column.</p>
+
+<h3>Still open</h3>
+<p>Which design does the platform want: selection as the valuer, or agents as authors? Can a valuation be authored by something that has no one to be answerable to? And does tab 7&rsquo;s recombinant child have a way to become the child of the third metamorphosis, or only the camel?</p>
 </section>
 </main>
 
