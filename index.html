@@ -1,1 +1,185 @@
-t 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Darwinian: edges, not nodes</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 24.23 27.33 2.69 11.67 29.31 11.67 7.77 27.33Z' fill='none' stroke='%232f3fa0' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#eceff4;--fg:#161a22;--mut:#566074;--ac:#2f3fa0;--ac2:#a8691d;--card:#f8f9fb;--ln:#c4cad6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1020;--fg:#e6e9f2;--mut:#9aa4bd;--ac:#9aabff;--ac2:#e0aa55;--card:#141a30;--ln:#2a3354}}
+:root[data-theme="dark"]{--bg:#0c1020;--fg:#e6e9f2;--mut:#9aa4bd;--ac:#9aabff;--ac2:#e0aa55;--card:#141a30;--ln:#2a3354}
+html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.65 Georgia,"Times New Roman",serif}
+.bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:calc(8px + env(safe-area-inset-top,0px)) 8px 8px;pointer-events:none}
+.bar>*{pointer-events:auto}
+.r{display:flex;gap:6px}
+button{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--ln);border-radius:10px;width:42px;height:42px;display:grid;place-items:center;cursor:pointer;padding:0}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.logo{width:42px;height:42px;color:var(--ac);animation:spin 120s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.logo{animation:none}html{scroll-behavior:auto}}
+#panel{position:fixed;z-index:19;right:8px;top:calc(58px + env(safe-area-inset-top,0px));width:min(92vw,312px);background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:10px;display:none;grid-template-columns:repeat(3,1fr);gap:8px}
+#panel.on{display:grid}
+#panel a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border:1px solid var(--ln);border-radius:10px;text-decoration:none;color:var(--fg);font-size:13px;line-height:1.25;text-align:center}
+#panel a b{font-size:20px;color:var(--ac);font-weight:400}
+#panel a:hover{border-color:var(--ac)}
+main{max-width:720px;margin:0 auto;padding:84px 20px 80px}
+h1{font-size:clamp(34px,7vw,52px);line-height:1.08;margin:0 0 14px;font-weight:400;letter-spacing:-.01em}
+h2{font-size:26px;margin:0 0 8px;font-weight:400;color:var(--ac)}
+section{padding:36px 0;border-top:1px solid var(--ln)}
+p{margin:0 0 14px;max-width:62ch}
+.lede{color:var(--mut);font-size:20px}
+.sc{overflow-x:auto;border:1px solid var(--ln);border-radius:10px;margin:16px 0;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:560px;font:14px/1.45 system-ui,sans-serif}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--ln);vertical-align:top}
+th{color:var(--mut);font-weight:600}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--ac2);font-weight:600;white-space:nowrap}
+svg text{font-family:system-ui,sans-serif;fill:var(--fg)}
+.fig{margin:16px 0;background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:10px;overflow-x:auto}
+.fig svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.cap{font:13px/1.4 system-ui,sans-serif;color:var(--mut);margin:6px 0 0;text-align:center}
+.st{fill:none;stroke:var(--ac);stroke-width:2;stroke-linejoin:round}
+.nd{fill:var(--bg);stroke:var(--ac);stroke-width:2}
+.bx{fill:var(--bg);stroke:var(--ac);stroke-width:1.6}
+.ar{fill:none;stroke:var(--ac2);stroke-width:2}
+.mu{fill:var(--mut)!important}
+h3{font-size:19px;margin:26px 0 6px;font-weight:400;color:var(--ac2)}
+pre{margin:0;padding:12px 14px;font:12.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre;overflow-x:auto;color:var(--fg);tab-size:2}
+.cl{font:13px/1.4 system-ui,sans-serif;color:var(--mut);margin:16px 0 -6px}
+q{quotes:"\201C" "\201D"}
+.nd.l{stroke:var(--ln)}
+.ar.b{stroke-width:3.5}
+.ed{font-size:13px;font-weight:600;fill:var(--ac2)!important}
+</style>
+</head>
+<body>
+<div class="bar">
+  <svg class="logo" viewBox="0 0 32 32" role="img" aria-label="Pentad logo"><path d="M16 2 24.23 27.33 2.69 11.67 29.31 11.67 7.77 27.33Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+  <div class="r">
+    <button id="wf" aria-label="Open navigation" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="3" cy="3" r="2"/><circle cx="10" cy="3" r="2"/><circle cx="17" cy="3" r="2"/><circle cx="3" cy="10" r="2"/><circle cx="10" cy="10" r="2"/><circle cx="17" cy="10" r="2"/><circle cx="3" cy="17" r="2"/><circle cx="10" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></button>
+    <button id="th" aria-label="Toggle light and dark theme"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="7"/><path d="M10 3a7 7 0 0 1 0 14z" fill="currentColor"/></svg></button>
+  </div>
+</div>
+<nav id="panel" aria-label="Sections">
+  <a href="#s1"><b>1</b>Chain</a><a href="#s2"><b>2</b>Edges</a><a href="#s3"><b>3</b>Name</a>
+  <a href="#s4"><b>4</b>Situated</a><a href="#s5"><b>5</b>Ledger</a><a href="#s6"><b>6</b>Tests</a>
+</nav>
+
+<main>
+<h1>The Darwinian: edges, not nodes</h1>
+<p class="lede">The pentad has five layers, but the claim lives in the transitions between them. Each edge is a different operation, and the chain as a whole is variation and selection carried out among agents.</p>
+<p class="cl">Status: hermeneutic lens, hypotheses not findings. Edge assignments were made after the fact. Compressed from two earlier pages (Through a glass, darkly; Black culture, with its trust round) and one session.</p>
+
+<section id="s1">
+<h2>The chain</h2>
+<p>The utterance becomes the sample, the language. Prediction error justifies, without aiming at anything, recombination and adaptation. Those recombinations become the stratagems of colliding principals A, B, &hellip; N. What follows is a graveyard and champions who live to die another day, and the champions become the next engine.</p>
+<div class="fig">
+<svg viewBox="0 0 660 190" width="660" role="img" aria-label="Five layers as light nodes joined by heavy labeled edges: compress, license, collide, filter, and a loop labeled inherit from V back to I prime">
+<defs><marker id="ah" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 8 4 0 8z" fill="var(--ac2)"/></marker></defs>
+<g class="ar b" marker-end="url(#ah)"><path d="M72 70H168" marker-end="url(#ah)"/><path d="M212 70H308" marker-end="url(#ah)"/><path d="M352 70H448" marker-end="url(#ah)"/><path d="M492 70H588" marker-end="url(#ah)"/><path d="M610 94V150H50V96" marker-end="url(#ah)" stroke-dasharray="7 5"/></g>
+<g class="nd l"><circle cx="50" cy="70" r="22"/><circle cx="190" cy="70" r="22"/><circle cx="330" cy="70" r="22"/><circle cx="470" cy="70" r="22"/><circle cx="610" cy="70" r="22"/></g>
+<g font-size="14" text-anchor="middle" class="mu"><text x="50" y="75">I</text><text x="190" y="75">II</text><text x="330" y="75">III</text><text x="470" y="75">IV</text><text x="610" y="75">V</text></g>
+<g font-size="12" text-anchor="middle" class="mu"><text x="50" y="112">Engine</text><text x="190" y="112">Sample</text><text x="330" y="112">Variation</text><text x="470" y="112">Collision</text><text x="610" y="112">Survivors</text></g>
+<g text-anchor="middle" class="ed"><text x="120" y="56">compress</text><text x="260" y="56">license</text><text x="400" y="56">collide</text><text x="540" y="56">filter</text><text x="330" y="172">inherit: survivors become the next engine (I&prime;)</text></g>
+</svg>
+<p class="cap">Nodes drawn light, edges drawn heavy. Remove an edge and its node still exists but does nothing.</p>
+</div>
+</section>
+
+<section id="s2">
+<h2>Edges, not nodes</h2>
+<p>Naming five layers invites asking what is in each box. The more useful question is what happens to something as it crosses from one to the next, and how that crossing fails.</p>
+<div class="sc"><table>
+<tr><th>Edge</th><th>Operation</th><th>What crosses</th><th>How it breaks</th></tr>
+<tr><td>I &rarr; II</td><td>Compress</td><td>Prelingual utterance becomes a sample, a token, a record</td><td>Whoever picks the sampling frame picks the reflection. 12TET is the benign case: the distortion is bounded and known to the cent</td></tr>
+<tr><td>II &rarr; III</td><td>License</td><td>Prediction error permits recombination; it does not choose one</td><td>Error with nothing to rank it. Nihilism, in this reading, is language running without regulation</td></tr>
+<tr><td>III &rarr; IV</td><td>Collide</td><td>Recombinations become the strategies of principals A to N</td><td>Collisions with no gate: anyone can insert, tombstone or reorder another's record</td></tr>
+<tr><td>IV &rarr; V</td><td>Filter</td><td>Collisions leave a graveyard and survivors, mostly by other agents' action</td><td>Agent ranking mistaken for survival, or a loyalty circle shielding its members from the filter</td></tr>
+<tr><td>V &rarr; I&prime;</td><td>Inherit</td><td>Survivors, culture, memory and institutions become the next engine's environment</td><td>The loop closes on agent output and the platform authors the person</td></tr>
+</table></div>
+<p>The diagonals of the star are a second kind of edge. They skip one layer and each is a separate claim: I&ndash;III (the engine becomes variation under constraint), III&ndash;V (variation is tested by what survives), V&ndash;II (survivors become language, so culture is narrated memory), II&ndash;IV (language becomes normative), IV&ndash;I (regulation returns to the engine, as David's harp calmed Saul).</p>
+</section>
+
+<section id="s3">
+<h2>Why the Darwinian</h2>
+<p>Darwin's account is also about transitions, not about any organism: variation, selection and inheritance, repeated. The pentad keeps those three and adds two things. A representation layer sits before variation, a sample with its error (II). And selection is carried out largely by other agents' strategies, so IV is the arena and V is the residue.</p>
+<div class="sc"><table>
+<tr><th>Darwin</th><th>Pentad</th><th>Added</th></tr>
+<tr><td>Variation</td><td>III, licensed by error at II</td><td>A representation layer that can be wrong, with a sampling frame</td></tr>
+<tr><td>Selection</td><td>IV collision, V survival</td><td>Principals A to N, so the environment is mostly each other</td></tr>
+<tr><td>Inheritance</td><td>V &rarr; I&prime;</td><td>Culture, memory and institutions as the carrier</td></tr>
+</table></div>
+<h3>One snag in the name</h3>
+<p>&ldquo;Darwinian&rdquo; ordinarily means variation that is blind. &ldquo;Justifies, not teleologically&rdquo; can be read two ways, and the II &rarr; III edge behaves differently under each.</p>
+<div class="sc"><table>
+<tr><th>Reading</th><th>Mechanism</th><th>Instances (hypothesized)</th><th>For the name</th></tr>
+<tr><td>License</td><td>Variation is generated blind; error only raises the payoff of exploring</td><td>Mutation, meiosis, brainstorming</td><td>Exact</td></tr>
+<tr><td>Direction</td><td>The update is aimed at the error</td><td>Gradient descent, next-token training, deliberate practice</td><td>Darwinian from III on, with a directed edge at II &rarr; III</td></tr>
+</table></div>
+<p>Level II names both next-token prediction and error, so the current wording straddles the two. Choosing a reading per system makes the name precise. Keeping both, and saying which systems use which, may be where biology, markets and models differ.</p>
+</section>
+
+<section id="s4">
+<h2>Situated across the pages</h2>
+<div class="sc"><table>
+<tr><th>Page</th><th>Reading</th><th>Edge doing the work</th></tr>
+<tr><td>Black culture</td><td>Budden hypothesized to concentrate on II, III and V; R&amp;B Money on I and IV with strong V memory. Money figures were relayed by Gemini and not checked</td><td>III &rarr; IV: the rotating panel is the collision. IV &rarr; V: the clip is what survives</td></tr>
+<tr><td>Circle of trust</td><td>Baseline trust is a cheap default; a loyalty circle is a bounded structure. The clip is said to argue about the probability of harm, while the &ldquo;bear&rdquo; side argues about the loss, the screening and the cost</td><td>IV &rarr; V: loyalty norms shield members from the filter. Baseline trust leans on scaffolding built at V &rarr; I&prime;</td></tr>
+<tr><td>Through a glass, darkly</td><td>Ukubona as the II surface, with gates and a salience node. A sample is a glass, darkly</td><td>The gates are edges: GatedAPI on II &rarr; III, SlowAPI on III &rarr; IV, principal ratification on V &rarr; I&prime;</td></tr>
+<tr><td>A live, unadjudicated case</td><td>Read only as a ledger design problem; no findings about anyone. The interval between event and each account is a measurement</td><td>I &rarr; II latency, and the V &rarr; I&prime; guard: an agent's reading of a person is stored as attribution, never as that person's own account</td></tr>
+</table></div>
+<p class="cl">The video behind the trust round was not viewed by Claude; its summary came from other assistants.</p>
+</section>
+
+<section id="s5">
+<h2>What follows for the ledger</h2>
+<p>If the edges carry the meaning, a ledger of nodes keeps the least interesting part. A node is whatever the edges leave standing. The earlier schemas record entries by layer; this proposal records the transitions as first-class lines.</p>
+<p class="cl">ledger.edge.ndjson (proposal)</p>
+<div class="sc"><pre>{"type":"field","name":"from","note":"I | II | III | IV | V | I'"}
+{"type":"field","name":"to","note":"the layer it crossed into"}
+{"type":"field","name":"op","note":"compress | license | insert | tombstone | reorder | collide | filter | ratify | inherit"}
+{"type":"field","name":"actor","note":"who performed the operation"}
+{"type":"field","name":"frame","note":"sampling frame: when, in what state, asked by whom"}
+{"type":"field","name":"ts","note":"timestamp, with ts_precision"}
+{"type":"field","name":"ratified","note":"true only if the principal confirmed it, with ts"}
+{"type":"rule","note":"Edges append. Nothing is overwritten, so a later state never erases an earlier one."}
+{"type":"rule","note":"An agent's filter edge never becomes the principal's ratify edge."}</pre></div>
+</section>
+
+<section id="s6">
+<h2>What would count as a miss</h2>
+<div class="sc"><table>
+<tr><th>#</th><th>Claim</th><th>Test</th><th>Miss</th></tr>
+<tr><td>D1</td><td>Documented failures are edge failures: nihilism at II &rarr; III, platform authorship at V &rarr; I&prime;, loyalty impunity at IV &rarr; V</td><td>Code each case by broken edge and by bad node</td><td>Node coding explains as much</td></tr>
+<tr><td>D2</td><td>Where a representation layer exists, the selecting environment is mostly other agents' strategies</td><td>For each case, estimate selection pressure from agents versus fixed constraints</td><td>Fixed constraints dominate</td></tr>
+<tr><td>D3</td><td>II &rarr; III is license in biological and market systems and direction in trained models</td><td>Classify a set of systems before looking at outcomes</td><td>Both readings fit every system, so the distinction is empty</td></tr>
+<tr><td>D4</td><td>An edge ledger answers questions a node ledger cannot: who changed what, under which frame</td><td>Replay a disputed record from each kind of ledger</td><td>The node ledger answers the same questions</td></tr>
+</table></div>
+<p>These are scored by readers who can see the records, not by the author. Until they are, the Darwinian stays in the hermeneutic column.</p>
+<h3>Still open</h3>
+<p>Is V &rarr; II, survivors becoming language, an edge of its own or only a diagonal? Which edge has no named operation yet? And should the name stay if the II &rarr; III edge is directed in the systems this platform cares about most?</p>
+</section>
+</main>
+
+<script>
+(function(){
+var d=document.documentElement,p=document.getElementById('panel'),w=document.getElementById('wf'),t=document.getElementById('th');
+try{var s=localStorage.getItem('theme');if(s)d.setAttribute('data-theme',s)}catch(e){}
+t.onclick=function(){
+  var dark=d.getAttribute('data-theme')?d.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+  var n=dark?'light':'dark';d.setAttribute('data-theme',n);
+  try{localStorage.setItem('theme',n)}catch(e){}
+};
+function tog(o){p.classList.toggle('on',o);w.setAttribute('aria-expanded',o)}
+w.onclick=function(e){e.stopPropagation();tog(!p.classList.contains('on'))};
+p.onclick=function(e){if(e.target.closest('a'))tog(false)};
+document.addEventListener('click',function(e){if(!p.contains(e.target))tog(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')tog(false)});
+})();
+</script>
+</body>
+</html>
